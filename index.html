@@ -3,9 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Strength </title>
+    <title>Password Strength</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        div{
+            width: 50%;
+        }
+        #password{
+            width: 50%;
+            padding: 5px;
+            font-size: 20px;
+        }
+        #submit{
+            width: 18%;
+            padding: 5px;
+            font-size: 20px;
+            background-color: orange;
+        }
+    </style>
 </head>
 <body>
+    <div>
+        <input type="password" id="password" placeholder="password">
+        <button type="submit" id="submit">submit</button>
+        <p id="msg"></p>
+    </div>
     
+
+    <script>
+
+        let password = document.querySelector(`#password`);
+        let msg = document.querySelector(`#msg`);
+
+        password.addEventListener(`input`,()=>{
+            if(password.value.length > 0 && password.value.length <= 4){
+                msg.innerHTML = "*password is weak";
+                msg.style.color="red";
+            }else if(password.value.length > 4 && password.value.length <= 8){
+                msg.innerHTML = "*password is medium";
+                msg.style.color="orange";
+            }else if(password.value.length > 8){
+                msg.innerHTML = "*password is strong";
+                msg.style.color="green"
+            }
+        })
+
+    </script>
 </body>
 </html>
